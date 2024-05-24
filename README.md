@@ -5,3 +5,5 @@ Web Programming 381 assignment for showing recent tweets from X (Twitter), and l
 
 e.g: SPOTIFY_CLIENT_ID=1a2b3c4d 
      SPOTIFY_CLIENT_SECRET=4d3c2b1a
+
+Note: run command: 'git update-index --assume-unchanged .\WPR_3781_Assignment_Group_V4\.env' from the root directory to avoid saving changes to the .env file.
