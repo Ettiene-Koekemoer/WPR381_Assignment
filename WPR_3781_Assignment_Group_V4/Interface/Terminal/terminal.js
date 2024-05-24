@@ -1,5 +1,7 @@
 const inquirer = require("inquirer");
+const readlineSync = require('readline-sync');
 const { closeApp, getUserInput } = require("./utils");
+const { lookUpSong } = require("./spotifyApi");
 
 //Main Menu
 const mainMenu = () => {
@@ -25,10 +27,9 @@ const mainMenu = () => {
           await goBackToMainMenu();
           break;
         case "Spotify Song Look-Up":
-          //songLookUp call
-          await getUserInput("Input Name of Song: ").then((input) => {
-            console.log("Song: ", input);
-            //I added Input capture if needed, if your function does not need it or has it built in remove getUserInput
+          //lookUpSong call
+          await getUserInput("Input Name of Song: ").then(async(input) => {
+            await lookUpSong(input);
           });
           await goBackToMainMenu();
           break;
