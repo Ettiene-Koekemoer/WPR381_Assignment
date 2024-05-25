@@ -10,7 +10,6 @@ const wait = (milliseconds) => {
 //Close App
 const closeApp = async () => {
   const message = "Goodbye!";
-  console.log();
   for (const char of message) {
     process.stdout.write(char);
     await wait(100);

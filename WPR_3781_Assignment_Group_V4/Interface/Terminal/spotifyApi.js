@@ -47,7 +47,7 @@ async function lookUpSong(inputQuery) {
 
         if (song) {
             console.log(`Song found: ${song.name} by ${song.artists.map(artist => artist.name).join(', ')}`);
-            console.log(`Listen here: ${song.external_urls.spotify}`);
+            console.log(`Listen here: ${song.external_urls.spotify}\n`);
         } else {
             console.log('No song found with that name.');
         }
