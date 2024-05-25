@@ -13,14 +13,17 @@ function getLatestTweets(username,tweetcount = 20)
 {
 const params = {screen_name: username, count: tweetcount};
 
-user.get('statuses/user_timeline',params)
-.then
-(tweets => {tweets.forEach(tweet => {
-        console.log('Tweet by ${tweet.user.name}: &{tweet.text}');
+user.get('statuses/user_timeline', params)
+.then(tweets => {
+    tweets.forEach(tweet => {
+    console.log(`Tweet by ${tweet.user.name}: ${tweet.text}`);
     });
 })
 .catch(error => {
     console.error('Error fetching tweets:', error);
 });
 
+
 }
+
+module.exports = {getLatestTweets};

@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const readlineSync = require("readline-sync");
 const { closeApp, getUserInput } = require("./utils");
 const { lookUpSong } = require("./spotifyApi");
+const { getLatestTweets} = require("./twitter");
 let lastAction = null;
 
 //Twitter Function
