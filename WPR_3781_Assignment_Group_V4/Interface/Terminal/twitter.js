@@ -1,29 +1,34 @@
-const Twitter = require('twitter');
-const fs = require('fs').promises;
+const Twitter = require('twitter-v2');
 require('dotenv').config();
 
-const user = new Twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+const client = new Twitter({
+bearer_token: process.env.TWITTER_BEARER_TOKEN
 });
 
-function getLatestTweets(username,tweetcount = 20)
-{
-const params = {screen_name: username, count: tweetcount};
+function getLatestTweets(username, tweetCount = 20) {
+console.log(`Fetching tweets for ${username}...`);
 
-user.get('statuses/user_timeline', params)
-.then(tweets => {
-    tweets.forEach(tweet => {
-    console.log(`Tweet by ${tweet.user.name}: ${tweet.text}`);
-    });
-})
-.catch(error => {
+const params = {
+    query: `from:${username}`,
+    max_results: tweetCount,
+    'tweet.fields': 'created_at,author_id'
+};
+
+return client.get('tweets/search/recent', params)
+    .then(response => {
+    const { data } = response;
+    if (data && data.length > 0) {
+        console.log(`Fetched ${data.length} tweets.`);
+        data.forEach(tweet => {
+        console.log(`Tweet by ${username}: ${tweet.text}`);
+        });
+    } else {
+        console.log('No tweets found for this user.');
+    }
+    })
+    .catch(error => {
     console.error('Error fetching tweets:', error);
-});
-
-
+    });
 }
 
-module.exports = {getLatestTweets};
+module.exports = { getLatestTweets };

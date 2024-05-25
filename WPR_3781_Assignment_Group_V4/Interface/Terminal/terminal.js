@@ -7,10 +7,11 @@ let lastAction = null;
 
 //Twitter Function
 const loadLatestTweets = async () => {
-  await getUserInput("Input @Name of Twitter user: ").then(async (input) => {
-    //await functionName(input);
-    console.log("Work In Progress");
-  });
+  const input = await getUserInput("Input @Name of Twitter user: ");
+  const cleanUsername = input.startsWith('@') ? input.slice(1) : input;
+  console.log(`Looking up tweets for ${cleanUsername}...`);
+  await getLatestTweets(cleanUsername, 20);
+  console.log('Finished looking up tweets.');
 };
 
 //Spotify Function
