@@ -11,7 +11,7 @@ console.log(`Fetching tweets for ${username}...`);
 const params = {
     query: `from:${username}`,
     max_results: tweetCount,
-    'tweet.fields': 'created_at,author_id'
+    'tweet.fields': 'created_at,author_id,text'
 };
 
 return client.get('tweets/search/recent', params)
@@ -28,6 +28,7 @@ return client.get('tweets/search/recent', params)
     })
     .catch(error => {
     console.error('Error fetching tweets:', error);
+    throw error; 
     });
 }
 

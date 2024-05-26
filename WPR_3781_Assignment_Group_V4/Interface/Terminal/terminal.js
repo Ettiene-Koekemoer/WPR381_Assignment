@@ -7,13 +7,16 @@ let lastAction = null;
 
 //Twitter Function
 const loadLatestTweets = async () => {
-  const input = await getUserInput("Input @Name of Twitter user: ");
-  const cleanUsername = input.startsWith('@') ? input.slice(1) : input;
-  console.log(`Looking up tweets for ${cleanUsername}...`);
-  await getLatestTweets(cleanUsername, 20);
-  console.log('Finished looking up tweets.');
+  try {
+    const input = await getUserInput("Input @Name of Twitter user: ");
+    const cleanUsername = input.startsWith('@') ? input.slice(1) : input;
+    console.log(`Looking up tweets for ${cleanUsername}...`);
+    await getLatestTweets(cleanUsername, 20);
+    console.log('Finished looking up tweets.');
+  } catch (error) {
+    console.error('Error in function loadLatestTweets:', error);
+  }
 };
-
 //Spotify Function
 const lookUpSpotifySong = async () => {
   await getUserInput("Input Name of Song: ").then(async (input) => {
