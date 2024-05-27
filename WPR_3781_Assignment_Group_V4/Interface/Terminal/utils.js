@@ -20,18 +20,35 @@ const closeApp = async () => {
 };
 
 //Gets User Input from Terminal
-function getUserInput(promptText) {
+async function getUserInput(promptText) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  return new Promise((resolve, reject) => {
-    rl.question(promptText, (input) => {
-      resolve(input.trim());
-      rl.close();
+  let input;
+  let isValid = false;
+
+  while (!isValid) {
+    input = await new Promise((resolve) => {
+      rl.question(promptText, (input) => {
+        resolve(input.trim());
+      });
     });
-  });
+
+    //If the input is invalid, display an error message and loop again
+    //Cleaning input prevents error 400
+    if (input.length === 0 || input.length > 50) {
+      console.log(
+        "Invalid input: Input should not be empty and should be less than or equal to 50 characters."
+      );
+    } else {
+      isValid = true;
+    }
+  }
+
+  rl.close();
+  return input;
 }
 
 module.exports = {
