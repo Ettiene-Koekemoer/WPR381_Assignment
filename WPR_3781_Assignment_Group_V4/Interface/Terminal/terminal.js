@@ -30,12 +30,7 @@ const mainMenu = () => {
       lastAction = selection.action;
       console.clear();
       console.log("=== " + lastAction + " ===\n");
-      switch (selection.action) {
-        case "Load Latest Tweets":
-          //loadTweets call
-          await loadLatestTweets();
-          await goBackToMainMenu();
-          break;
+      switch (selection.action) {        
         case "Spotify Song Look-Up":
           //lookUpSong call
           await lookUpSpotifySong();
@@ -67,11 +62,6 @@ const goBackToMainMenu = async () => {
         mainMenu();
       } else if (selection.back === "Retry Last Action") {
         switch (lastAction) {
-          case "Load Latest Tweets":
-            //loadTweets call
-            await loadLatestTweets();
-            await goBackToMainMenu();
-            break;
           case "Spotify Song Look-Up":
             //lookUpSong call
             await lookUpSpotifySong();
