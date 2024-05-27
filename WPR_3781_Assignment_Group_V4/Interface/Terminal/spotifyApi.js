@@ -63,7 +63,7 @@ async function lookUpSong(inputQuery) {
       console.log("No song found with that name.");
     }
   } catch (error) {
-    console.error("Error searching for the song:", error.message);
+    console.error("Error:", error.message);
   }
 }
 

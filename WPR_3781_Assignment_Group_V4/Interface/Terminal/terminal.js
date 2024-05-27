@@ -14,7 +14,8 @@ const lookUpSpotifySong = async () => {
 //Main Menu
 const mainMenu = () => {
   console.clear();
-  console.log("=== Simple API Terminal ===\n");
+  console.log("=== Group 4 Assignment 1 ===\n");
+
   inquirer
     .prompt([
       {
