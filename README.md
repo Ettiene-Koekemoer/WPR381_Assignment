@@ -12,3 +12,9 @@ If you have pulled the latest origin and use 'node ./index.js' and it gives you 
 1. First 'cd' into /Interface
 2. Use 'nmp install' to install/repair/update the packages which are causing problems
 3. CAUTION! If 'Inquirer' is causing issues install version 7 not the latest version. Use 'npm install inquirer@7'
+
+Group members:
+Ettiene Koekemoer (577657)
+Ewan Morris (577388)
+Keenan Lombard (578278)
+Wian Joubert (577737)
