@@ -2,9 +2,7 @@ const inquirer = require("inquirer");
 const readlineSync = require("readline-sync");
 const { closeApp, getUserInput } = require("./utils");
 const { lookUpSong } = require("./spotifyApi");
-const { getLatestTweets} = require("./twitter");
 let lastAction = null;
-
 
 //Spotify Function
 const lookUpSpotifySong = async () => {
@@ -23,7 +21,7 @@ const mainMenu = () => {
         type: "list",
         name: "action",
         message: "Select an Option",
-        choices: ["Load Latest Tweets", "Spotify Song Look-Up", "Exit"],
+        choices: ["Spotify Song Look-Up", "Exit"],
       },
     ])
     .then(async (selection) => {
